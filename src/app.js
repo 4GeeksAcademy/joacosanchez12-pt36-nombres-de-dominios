@@ -1,11 +1,24 @@
 /* eslint-disable */
-import "bootstrap";
-import "./style.css";
-
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
-
 window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
+  let pronombre = ["the", "our"];
+  let adjetivo = ["great", "big", "little"];
+  let sustantivo = ["jogger", "racoon"];
+
+  function domainGenerate() {
+    let domainList = document.querySelector("#domain-list");
+    domainList.innerHTML = "";
+
+    for (let pron of pronombre) {
+      for (let adj of adjetivo) {
+        for (let sus of sustantivo) {
+          let listItem = document.createElement("li");
+          listItem.textContent = `www.${pron}${adj}${sus}.com`;
+          listItem.classList.add("list-group-item");
+          domainList.appendChild(listItem);
+        }
+      }
+    }
+  }
+
+  document.querySelector("#generate").addEventListener("click", domainGenerate);
 };
